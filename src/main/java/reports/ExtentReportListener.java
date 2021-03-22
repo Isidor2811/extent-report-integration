@@ -5,18 +5,19 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.testng.ITestContext;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import screenshot_helper.ScreenShooter;
 
-public class ExtentReportListener implements ITestListener {
+public class ExtentReportListener implements ITestListener, ISuiteListener {
 
     private ExtentTest test;
     private ExtentReports extent;
 
     @Override
-    public void onStart(ITestContext context) {
+    public void onStart(ISuite iSuite) {
         String pathToReportFolder = System.getProperty("user.dir") + "/target/spark-reports/Report.html";
         ExtentSparkReporter sparkReporter = new ExtentSparkReporter(pathToReportFolder);
         sparkReporter.config().setTheme(Theme.DARK);
@@ -43,7 +44,7 @@ public class ExtentReportListener implements ITestListener {
     }
 
     @Override
-    public void onFinish(ITestContext context) {
+    public void onFinish(ISuite iSuite) {
         extent.flush();
     }
 }
