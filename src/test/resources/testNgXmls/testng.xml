@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke suite">
+    <listeners>
+        <listener class-name="reports.ExtentReportListener"/>
+    </listeners>
+
+    <test name="Smoke tests part #1">
+        <classes>
+            <class name="SmokeTests"/>
+        </classes>
+    </test>
+
+    <test name="Smoke tests part #2">
+        <classes>
+            <class name="SmokeTests2"/>
+        </classes>
+    </test>
+</suite>
